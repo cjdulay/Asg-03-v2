@@ -25,13 +25,13 @@ public class Salary extends Employee
 		return weekSal;
     }
 
-/*
     public String toString(){
-
+		String ySal = "Yearly Salary: " + getYearSal() + "\n";
+		String info = super.toString() + ySal;
+		return info;
     }
 
     public void writeData(){
 
     }
-*/
 }

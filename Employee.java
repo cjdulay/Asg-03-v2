@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class Employee 
+public class Employee
 {
     protected String name;
     protected String employeeNo;
@@ -8,7 +8,7 @@ public class Employee
     protected char type;
 
     //Constructors
-    
+
     Employee() throws IOException {
     }
 
@@ -18,7 +18,7 @@ public class Employee
         department = dep;
         type = tp;
     }
-    
+
     //Mutators
 
     public void setName(String nm){
@@ -32,9 +32,9 @@ public class Employee
     public void setDepartment(String dep){
         department = dep;
     }
-    
+
     // Getters
-    
+
     public String getName(){
         return name;
     }
@@ -59,19 +59,25 @@ public class Employee
         }
         return equals;
     }
-    
+
     public void writeData(){
-    
+
     }
-    
-    /*
+
     public String toString(){
-      String line = "";  
-      
-      line = getName() + " " + getEmployeeNo() + "Hourly " + 
-      
-    
+      String line = "";
+	  String n = "Name: " + getName() + "\n";
+	  String empN = "Employee Number: " + getEmployeeNo() + "\n";
+	  String dep = "Department: " + getDepartment() + "\n";
+	  String t = "";
+	  if(this.type == 'H'){
+		  t = "Type: Hourly\n";
+	  } else if (this.type == 'S'){
+		  t = "Type: Salary\n";
+	  } else if (this.type == 'C'){
+		  t = "Type: Commission\n";
+	  }
+      line = n + empN + dep + t;
       return line;
     }
-    */
 }
