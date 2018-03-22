@@ -46,7 +46,6 @@ public class Employee
     }
 
     // Helper Methods
-    
     public boolean equals(Employee e){
         boolean equals;
         if (getEmployeeNo() == e.getEmployeeNo()){
@@ -59,5 +58,16 @@ public class Employee
         return equals;
     }
     
+    public
     
+    /*
+    public String toString(){
+      String line = "";  
+      
+      line = getName() + " " + getEmployeeNo() + "Hourly " + 
+      
+    
+      return line;
+    }
+    */
 }

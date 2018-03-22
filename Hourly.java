@@ -2,13 +2,13 @@ public class Hourly extends Employee
 {
     private double hourlyRate;
     private double hourWeek;
-    private char type = 'H';
 
     Hourly(){
         
     }
     
-    Hourly(double hourRate, double weekHours){
+    Hourly(String name, String employeeNo, String department, double hourRate, double weekHours){
+        super(name, employeeNo, department, 'H');
         hourlyRate = hourRate;
         hourWeek = weekHours;
     }
@@ -29,4 +29,6 @@ public class Hourly extends Employee
     public double getHourWeek(){
         return hourWeek;
     }
+    
+    
 }
