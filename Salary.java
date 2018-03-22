@@ -25,11 +25,6 @@ public class Salary extends Employee
 		return weekSal;
     }
 
-/*
-    public boolean equals (Employee e){
-
-    }
-
     public String toString(){
 
     }
@@ -37,5 +32,5 @@ public class Salary extends Employee
     public void writeDate(){
 
     }
-*/
+
 }

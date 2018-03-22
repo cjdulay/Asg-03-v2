@@ -1,3 +1,5 @@
+import java.util.*;
+import java.io.*;
 public class Commission extends Employee
 {
 	double weeksSinceEmp;
@@ -6,7 +8,7 @@ public class Commission extends Employee
 	int yearSales;
 	double commissionRate;
 
-	Commission(){
+	Commission()throws IOException{
 	}
 
 	Commission(String name, String employeeNo, String department, double weeksSinceEmp, double baseWeekSalary, int weekSales, int yearSales, double commissionRate){
@@ -49,13 +51,11 @@ public class Commission extends Employee
 	public double getCommissionRate(){
 		return weeksSinceEmp;
 	}
-/*
+
 	public double calcWeeklySalary(){
-
-	}
-
-	public boolean equals (Employee e){
-
+		double commission = (double)(weekSales) * commissionRate;
+		double wkSal = baseWeekSalary + commission;
+		return wkSal;
 	}
 
 	public String toString(){
@@ -69,5 +69,4 @@ public class Commission extends Employee
 	public boolean topSeller(){
 
 	}
-*/
 }
