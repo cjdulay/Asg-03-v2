@@ -62,7 +62,7 @@ public class Commission extends Employee
 
 	}
 
-	public void writeDate(){
+	public void writeData(){
 
 	}
 
