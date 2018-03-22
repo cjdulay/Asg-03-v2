@@ -1,36 +1,41 @@
+import java.util.*;
+import java.io.*;
 public class Salary extends Employee
 {
-	public double yearSal;
+    public double yearSal;
 
-	Salary(){
-	}
+    Salary() throws IOException{   
+    }
 
-	Salary(String name, String employeeNo, String department, double yearSalary){
-		super(name, employeeNo, department, 'S');
-		yearSal = yearSalary;
-	}
+    Salary(String name, String employeeNo, String department, double yearSalary){
+        super(name, employeeNo, department, 'S');
+        yearSal = yearSalary;
+    }
 
-	public void setYearSal(double yearlySal){
-		yearSal = yearlySal
-	}
+    public void setYearSal(double yearlySal){
+        yearSal = yearlySal;
+    }
 
-	public double getYearSal(){
-		return yearSal;
-	}
+    public double getYearSal(){
+        return yearSal;
+    }
 
-	public double calcWeeklySalary(){
+    /*
+    public double calcWeeklySalary(){
 
-	}
+    }
+    
 
-	public boolean equals (Employee e){
+    public boolean equals (Employee e){
 
-	}
+    }
 
-	public String toString(){
+    public String toString(){
 
-	}
+    }
 
-	public void writeDate(){
-		
-	}
+    public void writeDate(){
+
+    }
+    */
 }

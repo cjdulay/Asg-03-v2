@@ -1,9 +1,11 @@
+import java.io.*;
+import java.util.*;
 public class Hourly extends Employee
 {
     private double hourlyRate;
     private double hourWeek;
 
-    Hourly(){
+    Hourly() throws IOException{
         
     }
     
@@ -24,7 +26,6 @@ public class Hourly extends Employee
     public double getHourlyRate(){
         return hourlyRate;
     }
-    
     
     public double getHourWeek(){
         return hourWeek;

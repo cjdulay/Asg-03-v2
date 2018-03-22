@@ -1,4 +1,6 @@
-public class Employee
+import java.util.*;
+import java.io.*;
+public class Employee 
 {
     protected String name;
     protected String employeeNo;
@@ -7,7 +9,7 @@ public class Employee
 
     //Constructors
     
-    Employee(){
+    Employee() throws IOException {
     }
 
     Employee (String nm, String empNo, String dep, char tp){
@@ -58,7 +60,9 @@ public class Employee
         return equals;
     }
     
-    public
+    public void writeData(){
+    
+    }
     
     /*
     public String toString(){
