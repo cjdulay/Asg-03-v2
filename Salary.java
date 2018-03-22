@@ -4,7 +4,7 @@ public class Salary extends Employee
 {
     public double yearSal;
 
-    Salary() throws IOException{   
+    Salary() throws IOException{
     }
 
     Salary(String name, String employeeNo, String department, double yearSalary){
@@ -20,12 +20,12 @@ public class Salary extends Employee
         return yearSal;
     }
 
-    /*
     public double calcWeeklySalary(){
-
+		double weekSal = yearSal / 52;
+		return weekSal;
     }
-    
 
+/*
     public boolean equals (Employee e){
 
     }
@@ -37,5 +37,5 @@ public class Salary extends Employee
     public void writeDate(){
 
     }
-    */
+*/
 }
