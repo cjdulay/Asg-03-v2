@@ -29,7 +29,7 @@ public class Salary extends Employee
 
     }
 
-    public void writeDate(){
+    public void writeData(){
 
     }
 
