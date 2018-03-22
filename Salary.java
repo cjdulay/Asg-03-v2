@@ -25,6 +25,7 @@ public class Salary extends Employee
 		return weekSal;
     }
 
+/*
     public String toString(){
 
     }
@@ -32,5 +33,5 @@ public class Salary extends Employee
     public void writeData(){
 
     }
-
+*/
 }

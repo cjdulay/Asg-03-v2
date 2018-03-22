@@ -11,11 +11,10 @@ public class Commission extends Employee
 	Commission()throws IOException{
 	}
 
-	Commission(String name, String employeeNo, String department, double weeksSinceEmp, double baseWeekSalary, int weekSales, int yearSales, double commissionRate){
+	Commission(String name, String employeeNo, String department, double weeksSinceEmp, double baseWeekSalary, int yearSales, double commissionRate){
 		super(name, employeeNo, department, 'C');
 		this.weeksSinceEmp = weeksSinceEmp;
 		this.baseWeekSalary = baseWeekSalary;
-		this.weekSales = weekSales;
 		this.yearSales = yearSales;
 		this.commissionRate = commissionRate;
 	}
@@ -58,6 +57,7 @@ public class Commission extends Employee
 		return wkSal;
 	}
 
+/*
 	public String toString(){
 
 	}
@@ -65,8 +65,15 @@ public class Commission extends Employee
 	public void writeData(){
 
 	}
-
+*/
 	public boolean topSeller(){
-
+		boolean top;
+		double sales = (double)(yearSales) / weeksSinceEmp;
+		if(sales > 1500){
+			top = true;
+		} else {
+			top = false;
+		}
+		return top;
 	}
 }
