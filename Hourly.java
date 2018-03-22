@@ -2,6 +2,7 @@ public class Hourly extends Employee
 {
     private double hourlyRate;
     private double hourWeek;
+    private char type = 'H';
 
     Hourly(){
         

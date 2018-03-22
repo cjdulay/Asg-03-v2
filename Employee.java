@@ -5,6 +5,8 @@ public class Employee
     protected String department;
     protected char type;
 
+    //Constructors
+    
     Employee(){
     }
 
@@ -14,6 +16,8 @@ public class Employee
         department = dep;
         type = tp;
     }
+    
+    //Mutators
 
     public void setName(String nm){
         name = nm;
@@ -26,7 +30,9 @@ public class Employee
     public void setDepartment(String dep){
         department = dep;
     }
-
+    
+    // Getters
+    
     public String getName(){
         return name;
     }
@@ -34,9 +40,24 @@ public class Employee
     public String getEmployeeNo(){
         return employeeNo;
     }
-    
+
     public String getDepartment(){
         return department;
     }
+
+    // Helper Methods
+    
+    public boolean equals(Employee e){
+        boolean equals;
+        if (getEmployeeNo() == e.getEmployeeNo()){
+            equals = true;
+        }
+        else {
+            equals = false;
+
+        }
+        return equals;
+    }
+    
     
 }
