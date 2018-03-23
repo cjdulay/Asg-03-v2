@@ -32,7 +32,9 @@ public class Salary extends Employee
         return line;
     }
 
-    public void writeData(){
-
-    }
+	public String writeData(){
+		String data = "";
+		data = super.writeData() + " " + getYearSal() + "\n";
+		return data;
+	}
 }

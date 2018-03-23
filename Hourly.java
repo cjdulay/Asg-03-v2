@@ -84,5 +84,10 @@ public class Hourly extends Employee
         return line;
     }
 
+	public String writeData(){
+		String data = "";
+		data = super.writeData() + " " + getHourlyRate() + " " + getHourWeek() + "\n";
+		return data;
+	}
 
 }

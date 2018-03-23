@@ -2,16 +2,16 @@ import java.util.*;
 import java.io.*;
 public class Commission extends Employee
 {
-    double weeksSinceEmp;
+    int weeksSinceEmp;
     double baseWeekSalary;
-    int weekSales;
-    int yearSales;
+    double weekSales;
+    double yearSales;
     double commissionRate;
 
     Commission()throws IOException{
     }
 
-    Commission(String name, String employeeNo, String department, double weeksSinceEmp, double baseWeekSalary, int yearSales, double commissionRate){
+    Commission(String name, String employeeNo, String department, int weeksSinceEmp, double baseWeekSalary, double yearSales, double commissionRate){
         super(name, employeeNo, department, 'C');
         this.weeksSinceEmp = weeksSinceEmp;
         this.baseWeekSalary = baseWeekSalary;
@@ -19,7 +19,7 @@ public class Commission extends Employee
         this.commissionRate = commissionRate;
     }
 
-    public void setWeeksSinceEmp(double weeks){
+    public void setWeeksSinceEmp(int weeks){
         weeksSinceEmp = weeks;
     }
 
@@ -27,15 +27,15 @@ public class Commission extends Employee
         baseWeekSalary = baseSalary;
     }
 
-    public void setWeekSales(int numWkSales){
+    public void setWeekSales(double numWkSales){
         weekSales = numWkSales;
     }
 
-    public void setCommissionRate(double weeks){
-        weeksSinceEmp = weeks;
+    public void setCommissionRate(double rate){
+        commissionRate = rate;
     }
 
-    public double getWeeksSinceEmp(){
+    public int getWeeksSinceEmp(){
         return weeksSinceEmp;
     }
 
@@ -43,16 +43,16 @@ public class Commission extends Employee
         return baseWeekSalary;
     }
 
-    public int getWeekSales(){
+    public double getWeekSales(){
         return weekSales;
     }
 
     public double getCommissionRate(){
-        return weeksSinceEmp;
+        return commissionRate;
     }
 
     public double calcWeeklySalary(){
-        double commission = (double)(weekSales) * commissionRate;
+        double commission = weekSales * commissionRate;
         double wkSal = baseWeekSalary + commission;
         return wkSal;
     }
@@ -67,7 +67,6 @@ public class Commission extends Employee
         String top = "";
 
         if(topSeller() == true){
-
             top = "Member of the Top Seller's Club\n";
         } else{
             top = "Not a member of the Top Seller's Club\n";
@@ -77,14 +76,16 @@ public class Commission extends Employee
         return line;
     }
 
-    public void writeData(){
-
-    }
+	public String writeData(){
+		String data = "";
+		data = super.writeData() + " " + getWeeksSinceEmp() + " " + getBaseWeekSalary() + " " + getWeekSales() + " " + this.yearSales + " " + getCommissionRate() + "\n";
+		return data;
+	}
 
     public boolean topSeller(){
         boolean top;
-        double sales = (double)(yearSales) / weeksSinceEmp;
-        if(sales > 1500){
+        double sales = yearSales / (double)(weeksSinceEmp);
+        if(sales > 1500.00){
             top = true;
         }
         else {

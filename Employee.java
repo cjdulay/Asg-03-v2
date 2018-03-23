@@ -64,8 +64,10 @@ public class Employee
         return 0;
     }
 
-    public void writeData(){
-
+    public String writeData(){
+		String data = "";
+		 data = getName() + " " + getEmployeeNo() + " " + getDepartment() + " " + this.type;
+		 return data;
     }
 
     public String toString(){
