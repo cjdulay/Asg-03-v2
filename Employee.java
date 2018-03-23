@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class Employee
+public class Employee 
 {
     protected String name;
     protected String employeeNo;
@@ -60,24 +60,24 @@ public class Employee
         return equals;
     }
 
+    public double calcWeeklySalary(){
+        return 0;
+    }
+
     public void writeData(){
 
     }
 
     public String toString(){
-      String line = "";
-	  String n = "Name: " + getName() + "\n";
-	  String empN = "Employee Number: " + getEmployeeNo() + "\n";
-	  String dep = "Department: " + getDepartment() + "\n";
-	  String t = "";
-	  if(this.type == 'H'){
-		  t = "Type: Hourly\n";
-	  } else if (this.type == 'S'){
-		  t = "Type: Salary\n";
-	  } else if (this.type == 'C'){
-		  t = "Type: Commission\n";
-	  }
-      line = n + empN + dep + t;
-      return line;
+        String line = "";  
+
+        String name = "Employee name: " + getName() + "\n";
+        String empNum = "Employee number: " + getEmployeeNo() + "\n";
+        String depart = "Department: " + getDepartment() + "\n";   
+        String ty = "Type: " + 
+                // Type is obtained with the input file
+
+        return line;
     }
+
 }
