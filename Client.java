@@ -8,10 +8,10 @@ public class Client
 
         System.out.println ("Thank you for using the Payroll Processing System");
     }
-    
-   
+
+
     //   The Payroll processing menu
-     
+
     public static void showMenu()
     {
         System.out.println("\nMENU:");

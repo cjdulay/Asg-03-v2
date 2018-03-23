@@ -1,3 +1,5 @@
+import java.util.*;
+import java.io.*;
 public class Employee
 {
     protected String name;
@@ -5,7 +7,9 @@ public class Employee
     protected String department;
     protected char type;
 
-    Employee(){
+    //Constructors
+
+    Employee() throws IOException {
     }
 
     Employee (String nm, String empNo, String dep, char tp){
@@ -14,6 +18,8 @@ public class Employee
         department = dep;
         type = tp;
     }
+
+    //Mutators
 
     public void setName(String nm){
         name = nm;
@@ -27,6 +33,8 @@ public class Employee
         department = dep;
     }
 
+    // Getters
+
     public String getName(){
         return name;
     }
@@ -34,15 +42,40 @@ public class Employee
     public String getEmployeeNo(){
         return employeeNo;
     }
-    
+
     public String getDepartment(){
         return department;
     }
 
-    public double calcWeeklySalary(){
-    
-        
-    
+    // Helper Methods
+    public boolean equals(Employee e){
+        boolean equals;
+        if (getEmployeeNo() == e.getEmployeeNo()){
+            equals = true;
+        }
+        else {
+            equals = false;
+
+        }
+        return equals;
     }
-    
+
+    public double calcWeeklySalary(){
+        return 0;
+    }
+
+    public void writeData(){
+
+    }
+
+    public String toString(){
+        String line = "";
+        String name = "Employee name: " + getName() + "\n";
+        String empNum = "Employee number: " + getEmployeeNo() + "\n";
+        String depart = "Department: " + getDepartment() + "\n";
+        String ty = "Type: " +  this.type + "\n";
+		line = name + empNum + depart + ty;
+        return line;
+    }
+
 }
