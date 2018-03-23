@@ -27,7 +27,7 @@ public class Salary extends Employee
 
     public String toString(){
 		String line = "";
-		String ysal = "Yearly Salary: " + getYearSal() + "\n";
+		String ySal = "Yearly Salary: " + getYearSal() + "\n";
 		line = 	super.toString() + ySal;
         return line;
     }
