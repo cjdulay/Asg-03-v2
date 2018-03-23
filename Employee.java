@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class Employee 
+public class Employee
 {
     protected String name;
     protected String employeeNo;
@@ -69,14 +69,12 @@ public class Employee
     }
 
     public String toString(){
-        String line = "";  
-
+        String line = "";
         String name = "Employee name: " + getName() + "\n";
         String empNum = "Employee number: " + getEmployeeNo() + "\n";
-        String depart = "Department: " + getDepartment() + "\n";   
-        String ty = "Type: " + 
-                // Type is obtained with the input file
-
+        String depart = "Department: " + getDepartment() + "\n";
+        String ty = "Type: " +  this.type + "\n";
+		line = name + empNum + depart + ty;
         return line;
     }
 
