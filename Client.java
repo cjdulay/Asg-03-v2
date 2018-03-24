@@ -1,13 +1,13 @@
 import java.util.*;
 import java.io.*;
 public class Client
-
 {
 
-    public static void main(String args[]) throws IOException
-
+	public static void main(String args[]) throws IOException
     {
-        Payroll pay = new Payroll();
+		Payroll pay = new Payroll();
+		ArrayList <Employee> empList = pay.getEmpList();
+		Client client = new Client();
         //GET FILE NAMES
         // define necessary variables here
         char option = ' ';
@@ -21,7 +21,7 @@ public class Client
             showMenu();
             System.out.println("Enter option: ");
             String input = sc.next();
-            Payroll valid;
+            Employee valid;
 
             if (input.length() == 1){
                 option = Character.toUpperCase(input.charAt(0));
@@ -30,32 +30,38 @@ public class Client
                     System.out.print("Enter employee number: ");
                     empNo = sc.next();
                     valid = pay.checkEmpNum(empNo);
-                    addEmployee(empNo, );
+                    //addEmployee(empNo, )
                 } else if (option == 'I') {
-                    System.out.println("hi");
-                    //printInfo();
+					System.out.print("Enter employee number: ");
+					String empNo;
+					empNo = sc.next();
+                    valid = pay.checkEmpNum(empNo);
+                    client.printInfo(empNo, empList);
                 } else if (option == 'D') {
-                    System.out.println("hi");
-                    //removeEmp();
+					String empNo;
+					System.out.print("Enter employee number: ");
+					empNo = sc.next();
+                    valid = pay.checkEmpNum(empNo);
+                    client.removeEmp(empNo, empList);
                 } else if (option == 'S') {
-                    System.out.println("hi");
-                    //printWeeklyPay();
+					String empNo;
+					System.out.print("Enter employee number: ");
+					empNo = sc.next();
+                    valid = pay.checkEmpNum(empNo);
+                    client.printWeeklyPay(empNo, empList);
                 } else if (option == 'T') {
-                    System.out.println("hi");
                     //printTopSellers();
                 } else if (option == 'P') {
-                    System.out.println("hi");
                     //printSalaryReport();
                 } else if (option == 'W') {
-                    System.out.println("hi");
                     //weekProcessing();
                 } else if(option == 'Q'){
                     option ='Q';
-                } 
+                }
                 else  {
                     System.out.println("Invalid Option!");
                 }
-            } 
+            }
             else {
                 System.out.println("Invalid Option!");
             }
@@ -81,7 +87,7 @@ public class Client
         System.out.println();
         System.out.println("Q - Quit the system");
     }
-    
+
     public void addEmployee(String emp, Payroll data){
         String name;
         String employeeNo;
@@ -130,4 +136,61 @@ public class Client
 
         }
     }
+
+	public void printInfo(String empNum, ArrayList<Employee> empList){
+
+	}
+
+	public void removeEmp(String empNum, ArrayList<Employee> empList){
+		String name = " ";
+		int i = 0;
+		boolean found = false;
+        while (i < empList.size() && !found){
+            if (empList.get(i).getEmployeeNo().equals(empNum)){
+                name = empList.get(i).getName();
+				found = true;
+            } else {
+				i++;
+			}
+        }
+		System.out.println("Name: " + name);
+		System.out.println("Employee number: " + empNum);
+		System.out.print("Would you still like to delete this employee? (Y/N): ");
+		Scanner sc = new Scanner(System.in);
+		String input = sc.next();
+		char response = ' ';
+		if (input.length() == 1){
+			response = Character.toUpperCase(input.charAt(0));
+				if (response == 'Y'){
+					int x = 0;
+					boolean found2 = false;
+			        while (x < empList.size() && !found){
+			            if (empList.get(x).getEmployeeNo().equals(empNum)){
+			                empList.remove(x);
+							found2 = true;
+			            } else {
+							x++;
+						}
+			        }
+				} else{
+					return;
+				}
+		} else {
+			return;
+		}
+	}
+
+	public void printWeeklyPay(String empNum, ArrayList<Employee> empList){
+		Double weeklySalary;
+		int i = 0;
+		boolean found = false;
+        while (i < empList.size() && !found){
+            if (empList.get(i).getEmployeeNo().equals(empNum)){
+                weeklySalary = empList.get(i).calcWeeklySalary();
+				found = true;
+            } else {
+				i++;
+			}
+        }
+	}
 }
