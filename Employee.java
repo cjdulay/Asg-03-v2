@@ -1,15 +1,20 @@
-import java.util.*;
-import java.io.*;
+
 public class Employee
+
 {
+
     protected String name;
+
     protected String employeeNo;
+
     protected String department;
+
     protected char type;
 
     //Constructors
 
-    Employee() throws IOException {
+    Employee(){
+
     }
 
     Employee (String nm, String empNo, String dep, char tp){
@@ -26,7 +31,9 @@ public class Employee
     }
 
     public void setEmpl(String empNo){
+
         employeeNo = empNo;
+
     }
 
     public void setDepartment(String dep){
@@ -40,7 +47,9 @@ public class Employee
     }
 
     public String getEmployeeNo(){
+
         return employeeNo;
+
     }
 
     public String getDepartment(){
@@ -48,6 +57,7 @@ public class Employee
     }
 
     // Helper Methods
+
     public boolean equals(Employee e){
         boolean equals;
         if (getEmployeeNo() == e.getEmployeeNo()){
@@ -55,7 +65,6 @@ public class Employee
         }
         else {
             equals = false;
-
         }
         return equals;
     }
@@ -64,18 +73,28 @@ public class Employee
         return 0;
     }
 
-    public void writeData(){
-
+    public String writeData(){
+        String data = "";
+        data = getName() + " " + getEmployeeNo() + " " + getDepartment() + " " + this.type;
+        return data;
     }
 
     public String toString(){
+
         String line = "";
+
         String name = "Employee name: " + getName() + "\n";
+
         String empNum = "Employee number: " + getEmployeeNo() + "\n";
+
         String depart = "Department: " + getDepartment() + "\n";
+
         String ty = "Type: " +  this.type + "\n";
-		line = name + empNum + depart + ty;
+
+        line = name + empNum + depart + ty;
+
         return line;
+
     }
 
 }
