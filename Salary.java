@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 public class Salary extends Employee
 {
@@ -26,13 +25,15 @@ public class Salary extends Employee
     }
 
     public String toString(){
-		String line = "";
-		String ySal = "Yearly Salary: " + getYearSal() + "\n";
-		line = 	super.toString() + ySal;
+        String line = "";
+        String ySal = "Yearly Salary: " + getYearSal() + "\n";
+        line = 	super.toString() + ySal;
         return line;
     }
-
-    public void writeData(){
-
+    
+    public String writeData(){
+        String data = "";
+        data = super.writeData() + " " + getYearSal() + "\n";
+        return data;
     }
 }
