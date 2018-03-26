@@ -1,23 +1,18 @@
-
 public class Employee
-
 {
-
     protected String name;
-
     protected String employeeNo;
-
     protected String department;
-
     protected char type;
-
+    
     //Constructors
-
-    Employee(){
-
+    public Employee(){
+        name = "";
+        employeeNo = "";
+        department = "";
     }
 
-    Employee (String nm, String empNo, String dep, char tp){
+    public Employee (String nm, String empNo, String dep, char tp){
         name = nm;
         employeeNo = empNo;
         department = dep;
@@ -30,15 +25,14 @@ public class Employee
         name = nm;
     }
 
-    public void setEmpl(String empNo){
-
+    public void setEmployeeNo(String empNo){
         employeeNo = empNo;
-
     }
 
     public void setDepartment(String dep){
         department = dep;
     }
+    
 
     // Getters
 
@@ -47,13 +41,15 @@ public class Employee
     }
 
     public String getEmployeeNo(){
-
         return employeeNo;
-
     }
 
     public String getDepartment(){
         return department;
+    }
+    
+    public char getType(){
+        return type;
     }
 
     // Helper Methods
@@ -78,23 +74,22 @@ public class Employee
         data = getName() + " " + getEmployeeNo() + " " + getDepartment() + " " + this.type;
         return data;
     }
-
+    
+    public boolean topSeller(){
+        return (true);
+    }
+    
     public String toString(){
-
         String line = "";
 
         String name = "Employee name: " + getName() + "\n";
-
         String empNum = "Employee number: " + getEmployeeNo() + "\n";
-
         String depart = "Department: " + getDepartment() + "\n";
-
         String ty = "Type: " +  this.type + "\n";
-
+        
         line = name + empNum + depart + ty;
 
         return line;
-
     }
 
 }
