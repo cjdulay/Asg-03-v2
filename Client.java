@@ -2,75 +2,93 @@ import java.util.*;
 import java.io.*;
 public class Client
 {
-
-	public static void main(String args[]) throws IOException
+    private static Scanner sc = new Scanner(System.in);
+    public static void main(String args[]) throws IOException
     {
-		Payroll pay = new Payroll();
-		ArrayList <Employee> empList = pay.getEmpList();
-		Client client = new Client();
-        //GET FILE NAMES
-        // define necessary variables here
         char option = ' ';
-        Scanner sc = new Scanner(System.in);
-
+        String empNo;
         System.out.println("Enter input file name: ");
-        String file = sc.next();
-        pay.readFile(file);
-
+        String file = sc.nextLine();
+        Payroll pay = new Payroll(file);
         while (option != 'Q'){
+            int check;
             showMenu();
-            System.out.println("Enter option: ");
-            String input = sc.next();
-            Employee valid;
-
-            if (input.length() == 1){
-                option = Character.toUpperCase(input.charAt(0));
-                if(option == 'A'){
-                    String empNo;
-                    System.out.print("Enter employee number: ");
-                    empNo = sc.next();
-                    valid = pay.checkEmpNum(empNo);
-                    //addEmployee(empNo, )
-                } else if (option == 'I') {
-					System.out.print("Enter employee number: ");
-					String empNo;
-					empNo = sc.next();
-                    valid = pay.checkEmpNum(empNo);
-                    client.printInfo(empNo, empList);
-                } else if (option == 'D') {
-					String empNo;
-					System.out.print("Enter employee number: ");
-					empNo = sc.next();
-                    valid = pay.checkEmpNum(empNo);
-                    client.removeEmp(empNo, empList);
-                } else if (option == 'S') {
-					String empNo;
-					System.out.print("Enter employee number: ");
-					empNo = sc.next();
-                    valid = pay.checkEmpNum(empNo);
-                    client.printWeeklyPay(empNo, empList);
-                } else if (option == 'T') {
-                    //printTopSellers();
-                } else if (option == 'P') {
-                    //printSalaryReport();
-                } else if (option == 'W') {
-                    //weekProcessing();
-                } else if(option == 'Q'){
-                    option ='Q';
+            option = choice();
+            if(option == 'A'){              
+                empNo = checkSize();
+                check = pay.checkEmpNum(empNo);
+                if (check == -1){
+                    addEmployee(empNo, pay);
+                    System.out.print("Employee number " + empNo + " has been added");
                 }
-                else  {
-                    System.out.println("Invalid Option!");
+                else {
+                    System.out.print("Invalid employee number");
                 }
-            }
-            else {
+            } else if (option == 'I') {
+                empNo = checkSize();
+                check = pay.checkEmpNum(empNo);
+                if (check != -1){
+                    pay.printEmployeeInfo(check);
+                }
+                else if (check == -1) {
+                    System.out.print("Invalid employee number");
+                }
+            } else if (option == 'D') {
+                empNo = checkSize();
+                check = pay.checkEmpNum(empNo);
+                if (check != -1){
+                    pay.removeEmployee(check);
+                    System.out.print("Employee number " + empNo + " has been removed");
+                }
+                else if (check == -1) {
+                    System.out.print("Invalid employee number");
+                }
+            } else if (option == 'S') {
+                empNo = checkSize();
+                check = pay.checkEmpNum(empNo);
+                if (check != -1){
+                    double sal;
+                    sal = pay.weeklySalary(check);
+                    System.out.print("The weekly salary of employee " + empNo + " is $" + sal);
+                }
+                else if (check == -1) {
+                    System.out.print("Invalid employee number");
+                } 
+            } else if (option == 'T') {
+                pay.topSellersList();
+            } else if (option == 'P') { 
+                pay.printSalaryReport();
+            } else if (option == 'W') {
+                System.out.print("Please enter output file name:");
+                String out = sc.next();
+                pay.printReport(out);
+                System.out.print("End of day report printed");
+            } else if(option == 'Q'){
+                option ='Q';
+            } 
+            else  {
                 System.out.println("Invalid Option!");
             }
-        }
+        } 
 
         // place here the code for the processing requirements
-
         System.out.println ("Thank you for using the Payroll Processing System");
+    }
 
+    public static char choice(){
+        char option;
+        System.out.print("Enter menu option: ");
+        option = sc.next().toUpperCase().charAt(0);
+        return option;
+    }
+
+    public static String checkSize(){
+        String empNum;
+        int index;
+        System.out.print("Enter employee number: ");
+        empNum = sc.next();
+
+        return empNum;
     }
 
     //   The Payroll processing menu
@@ -88,9 +106,8 @@ public class Client
         System.out.println("Q - Quit the system");
     }
 
-    public void addEmployee(String emp, Payroll data){
+    public static void addEmployee(String emp, Payroll data){
         String name;
-        String employeeNo;
         String department;
         char type;
         double hourlyRate;
@@ -106,8 +123,6 @@ public class Client
 
         System.out.print("Enter employee name: ");
         name = sc.next();
-        System.out.print("Enter employee no: ");
-        employeeNo = sc.next();
         System.out.print("Enter department: ");
         department = sc.next();
         System.out.print("Enter type: ");
@@ -117,10 +132,12 @@ public class Client
             hourlyRate = sc.nextDouble();
             System.out.print("Enter weekly hours: ");
             weeklyHours = sc.nextDouble();
+            data.addHourly(name, emp, department, hourlyRate, weeklyHours);
         }
         else if(type == 'S'){
             System.out.print("Enter yearly salary: ");
             yearlySalary = sc.nextDouble();
+            data.addSalary(name, emp, department, yearlySalary);
         }
         else if (type == 'C'){
             System.out.print("Enter weeks since employment: ");
@@ -133,64 +150,8 @@ public class Client
             yearSales = sc.nextDouble();
             System.out.print("Enter the commission rate: ");
             commissionRate = sc.nextDouble();
+            data.addCommission(name, emp, department, weeksSinceEmp, baseWeekSalary, yearSales, commissionRate);
 
         }
     }
-
-	public void printInfo(String empNum, ArrayList<Employee> empList){
-
-	}
-
-	public void removeEmp(String empNum, ArrayList<Employee> empList){
-		String name = " ";
-		int i = 0;
-		boolean found = false;
-        while (i < empList.size() && !found){
-            if (empList.get(i).getEmployeeNo().equals(empNum)){
-                name = empList.get(i).getName();
-				found = true;
-            } else {
-				i++;
-			}
-        }
-		System.out.println("Name: " + name);
-		System.out.println("Employee number: " + empNum);
-		System.out.print("Would you still like to delete this employee? (Y/N): ");
-		Scanner sc = new Scanner(System.in);
-		String input = sc.next();
-		char response = ' ';
-		if (input.length() == 1){
-			response = Character.toUpperCase(input.charAt(0));
-				if (response == 'Y'){
-					int x = 0;
-					boolean found2 = false;
-			        while (x < empList.size() && !found){
-			            if (empList.get(x).getEmployeeNo().equals(empNum)){
-			                empList.remove(x);
-							found2 = true;
-			            } else {
-							x++;
-						}
-			        }
-				} else{
-					return;
-				}
-		} else {
-			return;
-		}
-	}
-
-	public void printWeeklyPay(String empNum, ArrayList<Employee> empList){
-		Double weeklySalary;
-		int i = 0;
-		boolean found = false;
-        while (i < empList.size() && !found){
-            if (empList.get(i).getEmployeeNo().equals(empNum)){
-                weeklySalary = empList.get(i).calcWeeklySalary();
-				found = true;
-            } else {
-				i++;
-			}
-        }
-	}
 }
