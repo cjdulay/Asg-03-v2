@@ -1,30 +1,35 @@
-import java.io.*;
 public class Salary extends Employee
 {
-    public double yearSal;
+    private double yearSal;
+    private final int YEARWEEKS = 52;
 
-    Salary() throws IOException{
+    public Salary() {
+        super();
+        yearSal = 0.0;
     }
 
-    Salary(String name, String employeeNo, String department, double yearSalary){
+    public Salary(String name, String employeeNo, String department, double yearSalary){
         super(name, employeeNo, department, 'S');
         yearSal = yearSalary;
     }
 
+    // Setters
     public void setYearSal(double yearlySal){
         yearSal = yearlySal;
     }
 
+    //Getters
     public double getYearSal(){
         return yearSal;
     }
 
-    public double calcWeeklySalary(){
-        double weekSal = yearSal / 52;
+    //Helper Methods
+    @Override public double calcWeeklySalary(){
+        double weekSal = getYearSal() / YEARWEEKS;
         return weekSal;
     }
 
-    public String toString(){
+    @Override public String toString(){
         String line = "";
         String ySal = "Yearly Salary: " + getYearSal() + "\n";
         line = 	super.toString() + ySal;
